@@ -1,5 +1,7 @@
 package com.youtube.demo.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,6 +42,12 @@ public class UserController {
 		
 		return new RestResponse(HttpStatus.OK.value() ,
 				"Operacion exitosa");
+	}
+	
+	// metodo que busca los usuarios en las listas
+	@RequestMapping(value="/getUsers", method = RequestMethod.GET)
+	public List<User> getUsers() {
+		return this.userService.findAll();
 	}
 	
 	private boolean validate(User user) {
